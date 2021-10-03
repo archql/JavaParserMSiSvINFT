@@ -5,10 +5,15 @@ program TempParser;
 {$R *.res}
 
 uses
-    System.SysUtils, CodeParser,
-    Math,
-    System.ioutils, types,
-    ShellApi, Winapi.Windows;
+  System.SysUtils,
+  CodeParser,
+  Math,
+  System.ioutils,
+  types,
+  ShellApi,
+  Winapi.Windows,
+  ParseAnalys in 'ParseAnalys.pas',
+  customTypes;
 
 var
     Path, filename  : String;
@@ -18,6 +23,8 @@ var
     lexems          : TArray;
 
     fileIn, fileOut : TextFile;
+
+    count           : tCountAr;
 
 begin
 
@@ -48,6 +55,11 @@ begin
         writeln(fileOut, lexems[i]);
     closeFile(fileOut);
 
+
+    countLex(count, lexems);
+    assignFile(fileOut, filename + '_out_count' + '.txt', CP_UTF8);
+    formOut(count, fileOut);
+    closeFile(fileOut);
 
     readln;
 end.
