@@ -24,13 +24,49 @@ implementation
       setLength(COUNT, maxLen);
     end;
 
-  procedure addlex(var COUNT: tCountAr; var CURLEN, MAXLEN: integer; const TMP: String);
+  function isExist(var COUNT: tCountAr; const TMP: String): integer;
+    var
+      i: integer;
+      f: boolean;
+    begin
+      if length(COUNT)<>0 then f:=true
+        else f:=false;
+      i:=0;
+      RESULT:=-1;
+      while f do
+        begin
+          if COUNT[i].lex=TMP then
+            begin
+              f:=false;
+              RESULT:=i;
+            end;
+          inc(i);
+          if i=length(COUNT) then f:=false;
+        end;
+    end;
+
+  procedure addlex(var COUNT: tCountAr; var CURLEN, MAXLEN: integer; const TMP: String; const IS_OPERATOR: boolean);
+    var
+      num: integer;
     begin           //copy(s, from, count)
 
+      num:=isExist(COUNT, TMP);
+      if num<>-1 then inc(COUNT[num].num)
+        else
+          begin
+            if CURLEN>=MAXLEN-1 then modifyLen(COUNT, MAXLEN);
+            inc(CURLEN);
+            with COUNT[CURLEN] do
+              begin
+                lex:=TMP;
+                isOperator:=IS_OPERATOR;
+                num:=1;
+              end;
+          end;
     end;
 
   function findTerm(const LEXEMS: tArray; const STRBEGIN: integer): integer;
-    begin         //for, while - '(', method - '{', other - ';'
+    begin         //for, while - '(', method - '{', other - ';'    //скобочные последовательности???
 
     end;
 
@@ -56,24 +92,24 @@ implementation
               tmp:=LEXEMS[strBegin];
               if (tmp='do') then
                   begin
-                    addLex(COUNT, curLen, maxLen, 'do..while');   //проверка while на наличие  do
+                    addLex(COUNT, curLen, maxLen, 'do..while', true);   //проверка while на наличие  do
                     //найти strEnd while?
                     //переход str<>
                   end
                 else if (tmp='try') then
                     begin
-                      addLex(COUNT, curLen, maxLen, 'try..catch[..finally]');
+                      addLex(COUNT, curLen, maxLen, 'try..catch[..finally]', true);
                       //что-то ещё?
                       //переход str<>
                     end
                   else if (tmp='{') then
                       begin
-                        addLex(COUNT, curLen, maxLen, '{..}');
+                        addLex(COUNT, curLen, maxLen, '{..}', true);
                         inc(strBegin);
                       end
                     else if (tmp=';') then
                         begin
-                          addLex(COUNT, curLen, maxLen, ';');
+                          addLex(COUNT, curLen, maxLen, ';', true);
                           inc(strBegin);
                         end
                       else if (tmp='while') then
