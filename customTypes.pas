@@ -43,15 +43,18 @@ interface
         ENTRIES = ' ( { = < : ? assert catch if else case switch default try catch finally throw';                  //;?????
                                                                  }
 
-        MAJORENTRIES = ' ( { = < ? assert if switch try throw';                  //;?????
-        MINORENTRIES = ' else case default catch finally : ';
-        CYCLES = ' do for while ';                             //
+        MAJORENTRIES = ' ( { [ = ? : assert if switch try throw';
+        MINORENTRIES = ' else case default catch finally ';
+        CYCLES = ' do for while ';
         JUMPES = ' break return continue ';
-        SUPER_IGNORED = ' import class package'; //until the EoL
-        IGNORED = 'new class interface package extends throws implements final private public protected static volatile transient native strictfp abstract synchronized new  int byte short long boolean char double float void ';
-                                      //enum is where???
-        OP_SIGNS = ' ~ / \ +  - * % & | '' , " ; ';
+        SUPER_IGNORED = ' import class package enum '; //until the EoL
+        IGNORED = 'new class interface package extends throws implements final private public protected static volatile transient native strictfp abstract synchronized new  int byte short long boolean char double float void String ';
 
+        OP_SIGNS = ' ~ / \ +  - * % & | '' , " ; < > ';
+        DSIGNS = ' <= >= == != ++ -- || && ';
+
+  var
+    nLexems: integer;
 implementation
 
 end.

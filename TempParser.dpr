@@ -18,8 +18,8 @@ uses
 var
     Path, filename  : String;
     Files           : TStringDynArray;
-    i, nLexems      : integer;
-
+    i               : integer;
+   // nLexem: integer;
     lexems          : TArray;
 
     fileIn, fileOut : TextFile;
@@ -39,9 +39,10 @@ begin
     for i := 0 to Length(Files)-1 do
         writeln(' - ' + TPath.GetFileName(Files[i]));
 
-    repeat
-        write('input valid file name (with java code) (.txt): '); readln(filename);
-    until FileExists(filename + '.txt');
+  //  repeat
+  //      write('input valid file name (with java code) (.txt): '); readln(filename);
+  //  until FileExists(filename + '.txt');
+  filename:='code';
     AssignFile(fileIn, filename + '.txt', CP_UTF8);   // open file
 
     reset(fileIn);
@@ -57,9 +58,12 @@ begin
 
 
     countLex(count, lexems);
+
     assignFile(fileOut, filename + '_out_count' + '.txt', CP_UTF8);
+    rewrite(fileOut);
     formOut(count, fileOut);
     closeFile(fileOut);
 
-    readln;
+
+
 end.

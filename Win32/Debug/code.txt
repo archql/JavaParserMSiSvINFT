@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
-public class HelloWorld {
+public class HelloWorld 
+{
 
 	double real;
     double imag;
@@ -42,10 +43,10 @@ public class HelloWorld {
 	public static Complex add(Complex n1, Complex n2)
     {
         Complex temp = new Complex(0.0, 0.0);
-
+		
         temp.real = n1.real + n2.real;
         temp.imag = n1.imag + n2.imag;
-
+		if (temp.real==temp.imag) n2.real++;
         return(temp);
     }
 }
