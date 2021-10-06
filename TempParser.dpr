@@ -19,7 +19,7 @@ var
     Path, filename  : String;
     Files           : TStringDynArray;
     i               : integer;
-   // nLexem: integer;
+
     lexems          : TArray;
 
     fileIn, fileOut : TextFile;
@@ -39,10 +39,10 @@ begin
     for i := 0 to Length(Files)-1 do
         writeln(' - ' + TPath.GetFileName(Files[i]));
 
-  //  repeat
-  //      write('input valid file name (with java code) (.txt): '); readln(filename);
-  //  until FileExists(filename + '.txt');
-  filename:='code';
+    repeat
+        write('input valid file name (with java code) (.txt): '); readln(filename);
+    until FileExists(filename + '.txt');
+
     AssignFile(fileIn, filename + '.txt', CP_UTF8);   // open file
 
     reset(fileIn);
@@ -64,6 +64,6 @@ begin
     formOut(count, fileOut);
     closeFile(fileOut);
 
-
+    readln;
 
 end.
