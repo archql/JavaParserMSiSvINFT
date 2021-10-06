@@ -5,19 +5,26 @@ program TempParser;
 {$R *.res}
 
 uses
-    System.SysUtils, CodeParser,
-    Math,
-    System.ioutils, types,
-    ShellApi, Winapi.Windows;
+  System.SysUtils,
+  CodeParser,
+  Math,
+  System.ioutils,
+  types,
+  ShellApi,
+  Winapi.Windows,
+  ParseAnalys in 'ParseAnalys.pas',
+  customTypes;
 
 var
     Path, filename  : String;
     Files           : TStringDynArray;
-    i, nLexems      : integer;
+    i               : integer;
 
     lexems          : TArray;
 
     fileIn, fileOut : TextFile;
+
+    count           : tCountAr;
 
 begin
 
@@ -35,6 +42,7 @@ begin
     repeat
         write('input valid file name (with java code) (.txt): '); readln(filename);
     until FileExists(filename + '.txt');
+
     AssignFile(fileIn, filename + '.txt', CP_UTF8);   // open file
 
     reset(fileIn);
@@ -49,5 +57,13 @@ begin
     closeFile(fileOut);
 
 
+    countLex(count, lexems);
+
+    assignFile(fileOut, filename + '_out_count' + '.txt', CP_UTF8);
+    rewrite(fileOut);
+    formOut(count, fileOut);
+    closeFile(fileOut);
+
     readln;
+
 end.

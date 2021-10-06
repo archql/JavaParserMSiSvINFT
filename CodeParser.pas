@@ -5,32 +5,20 @@ interface
         System.SysUtils,
         Math,
         System.ioutils, types, StrUtils, Vcl.Graphics,  Vcl.ExtCtrls,
-        Vcl.Dialogs, classes;
+        Vcl.Dialogs, classes,
+        customTypes;
 
-    type
-        TArray = array of string;
+ //   type
+       // TArray = array of string;
 
-        TChar = set of char;
+    //    TChar = set of char;
 
-        TErrors = (ENoError, EInvChar {= $0001}, ELongOp {= $0002}, ENotEnoughOps {= $0004},
-            ENotEnoughBrackets, ELexemsBoundaryExeeded {= $0008});
-        TCharType = (CUnexpected, CSpecial, CLetter, CSign, CDelimeter);
+    //    TErrors = (ENoError, EInvChar {= $0001}, ELongOp {= $0002}, ENotEnoughOps {= $0004},
+      //      ENotEnoughBrackets, ELexemsBoundaryExeeded {= $0008});
+      //  TCharType = (CUnexpected, CSpecial, CLetter, CSign, CDelimeter);
 
 
-    const
-        ERRORMSG: array [TErrors] of string = (
-            'Everything is good! ',
-            'ERROR! Invalid character detected',
-            'ERROR! Too long operand detected',
-            'ERROR! Not enough operands! Last readed:',
-            'ERROR! Number of ''('' and '')'' symbols doesnt match',
-            'ERROR! Parser exeeded number of readed lexems!');
-
-        Letters : TChar = ['A'..'Z', 'a'..'z', '_', '0'..'9', '@', '^', '.', '#', '$'];
-        Signs : TChar = ['~', ':', '=', '/', '\', '+', '-', '*', '%', '&', '|', '<', '>', '?', {';',}'''', ',', '"'];
-        Delimeters : TChar = ['{', '}', '[', ']', '(', ')', ';', ','];
-
-        STR_VARIABLE_HEADER = 'int char double float ';
+    
 
     procedure parseLexem(var lexems: TArray; var lexem: string; var nLexems: integer);
 
