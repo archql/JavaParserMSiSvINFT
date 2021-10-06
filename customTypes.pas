@@ -31,7 +31,26 @@ interface
         Signs : TChar = ['~', ':', '=', '/', '\', '+', '-', '*', '%', '&', '|', '<', '>', '?', {';',} '''', ',', '"'];
         Delimeters : TChar = ['{', '}', '[', ']', '(', ')', ';', ','];
 
-        STR_VARIABLE_HEADER = 'int byte short long boolean char double float ';   //basic types
+        STR_VARIABLE_HEADER = ' int byte short long boolean char double float ';
+
+      {  TYPES = ' int byte short long boolean char double float void ';
+        PREFIXES = ' final private public protected static volatile transient native strictfp abstract synchronized new ';
+        POSTFIXES = ' extends throws implements ';    // if classes ignored?
+        STRUCTURES = ' class interface package enum ';                 //enum????
+        CYCLES = ' do for while ';
+        JUMPES = ' break return continue ';
+        IGNORED = ' import class package'; //until the EoL
+        ENTRIES = ' ( { = < : ? assert catch if else case switch default try catch finally throw';                  //;?????
+                                                                 }
+
+        MAJORENTRIES = ' ( { = < ? assert if switch try throw';                  //;?????
+        MINORENTRIES = ' else case default catch finally : ';
+        CYCLES = ' do for while ';                             //
+        JUMPES = ' break return continue ';
+        SUPER_IGNORED = ' import class package'; //until the EoL
+        IGNORED = 'new class interface package extends throws implements final private public protected static volatile transient native strictfp abstract synchronized new  int byte short long boolean char double float void ';
+                                      //enum is where???
+        OP_SIGNS = ' ~ / \ +  - * % & | '' , " ; ';
 
 implementation
 
