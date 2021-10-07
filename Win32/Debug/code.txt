@@ -36,7 +36,22 @@ public class HelloWorld
 		fuck () """ 
 		this 
 		*/
-
+		
+		
+		
+		for (int i=0; i<10; i++)
+		{
+			b++;
+		}
+		
+		if (a>b) b--;
+		
+		while (true)
+		{
+			b--;
+		}
+		
+		
         System.out.printf("Sum = %.1f + %.1fi", temp.real, temp.imag);
     }
 	
@@ -49,4 +64,49 @@ public class HelloWorld
 		if (temp.real==temp.imag) n2.real++;
         return(temp);
     }
+	
+	abstract class ClassName {
+ 
+		assert booleanExpression1: booleanExpression2;
+		boolean myVar;
+		myVar = false;
+		
+		
+		
+		
+		for (int num = 0; num < 10; num++)
+		if (num % 2 == 0) break;
+
+
+		switch (expression) {
+			case option1:
+			  //statement
+			case option2:
+			  //statement
+			case option3:
+			  //statement
+			case option4:
+			  //statement
+			case option5:
+			  //statement
+			  break;
+			default:
+		}
+		char myChar = 'T';
+		try {
+		  //statements
+		}
+		catch {
+		  //statements
+		}
+		
+	}
+	
+	public enum Colors {
+  RED,
+  YELLOW,
+  BLUE,
+  GREEN
+}
+	
 }

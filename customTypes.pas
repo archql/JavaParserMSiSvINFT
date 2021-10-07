@@ -43,7 +43,7 @@ interface
         ENTRIES = ' ( { = < : ? assert catch if else case switch default try catch finally throw';                  //;?????
                                                                  }
 
-        MAJORENTRIES = ' ( { [ = ? : assert if switch try throw';
+        MAJORENTRIES = ' ( { [ = ? : assert if switch try throw ';
         MINORENTRIES = ' else case default catch finally ';
         CYCLES = ' do for while ';
         JUMPES = ' break return continue ';
@@ -52,7 +52,7 @@ interface
 
         OP_SIGNS = ' ~ / \ +  - * % & | '' , " ; < > ';
         DSIGNS = ' <= >= == != ++ -- || && ';
-
+        BLACKLIST = ' } ] ) ';
   var
     nLexems: integer;
 implementation
