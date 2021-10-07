@@ -41,8 +41,8 @@ String
 args
 )
 {
-// Creates a reader instance which takes 
-// input from standard input - keyboard 
+// Creates a reader instance which takes  
+// input from standard input - keyboard  
 Scanner
 reader
 =
@@ -57,7 +57,7 @@ System.out.print
 "Enter a number: "
 )
 ;
-// nextInt() reads the next integer from the keyboard 
+// nextInt() reads the next integer from the keyboard  
 int
 number
 =
@@ -65,7 +65,7 @@ reader.nextInt
 (
 )
 ;
-// println() prints the following line to the output screen 
+// println() prints the following line to the output screen  
 System.out.println
 (
 "You entered: 'a' \""
@@ -251,23 +251,23 @@ expression
 case
 option1
 :
-//statement 
+//statement  
 case
 option2
 :
-//statement 
+//statement  
 case
 option3
 :
-//statement 
+//statement  
 case
 option4
 :
-//statement 
+//statement  
 case
 option5
 :
-//statement 
+//statement  
 break
 ;
 default
@@ -280,11 +280,11 @@ myChar
 ;
 try
 {
-//statements 
+//statements  
 }
 catch
 {
-//statements 
+//statements  
 }
 }
 public
@@ -298,4 +298,3 @@ YELLOW
 BLUE
 ,
 GREEN
-}

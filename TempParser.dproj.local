@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899/12/30 00:00:00.000.548,C:\Users\artem\OneDrive\work\delphi proj\@sem_3\МСиСвИНФТ\лаб 1 - парсер\TempParser.dproj=C:\Users\artem\OneDrive\work\delphi proj\Project1.dproj</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.548,C:\Users\artem\OneDrive\work\delphi proj\Project1.dproj=C:\Users\artem\OneDrive\work\delphi proj\@sem_3\МСиСвИНФТ\лаб 1 - парсер\TempParser.dproj</Transaction>
     <Transaction>2021/10/01 22:30:31.000.474,=C:\Users\Omnissiah\Workspace\Repo\Delphi\JavaParserMSiSvINFT\Unit1.pas</Transaction>
-    <Transaction>2021/10/01 22:31:05.000.932,C:\Users\Omnissiah\Workspace\Repo\Delphi\JavaParserMSiSvINFT\ParseAnalys.pas=C:\Users\Omnissiah\Workspace\Repo\Delphi\JavaParserMSiSvINFT\Unit1.pas</Transaction>
+    <Transaction>2021/10/01 22:31:05.000.932,C:\Users\Omnissiah\Workspace\Repo\Delphi\JavaParserMSiSvINFT\Unit1.pas=C:\Users\Omnissiah\Workspace\Repo\Delphi\JavaParserMSiSvINFT\ParseAnalys.pas</Transaction>
     <Transaction>2021/10/03 15:52:40.000.672,=C:\Users\Omnissiah\Workspace\Repo\Delphi\JavaParserMSiSvINFT\Unit1.pas</Transaction>
-    <Transaction>2021/10/03 15:53:03.000.559,C:\Users\Omnissiah\Workspace\Repo\Delphi\JavaParserMSiSvINFT\Unit1.pas=C:\Users\Omnissiah\Workspace\Repo\Delphi\JavaParserMSiSvINFT\tTypes.pas</Transaction>
+    <Transaction>2021/10/03 15:53:03.000.559,C:\Users\Omnissiah\Workspace\Repo\Delphi\JavaParserMSiSvINFT\tTypes.pas=C:\Users\Omnissiah\Workspace\Repo\Delphi\JavaParserMSiSvINFT\Unit1.pas</Transaction>
     <Transaction>2021/10/03 15:54:32.000.667,C:\Users\Omnissiah\Workspace\Repo\Delphi\JavaParserMSiSvINFT\tTypes.pas=</Transaction>
     <Transaction>2021/10/03 16:00:58.000.164,=C:\Users\Omnissiah\Workspace\Repo\Delphi\JavaParserMSiSvINFT\Unit1.pas</Transaction>
-    <Transaction>2021/10/03 16:01:11.000.562,C:\Users\Omnissiah\Workspace\Repo\Delphi\JavaParserMSiSvINFT\Unit1.pas=C:\Users\Omnissiah\Workspace\Repo\Delphi\JavaParserMSiSvINFT\customTypes.pas</Transaction>
+    <Transaction>2021/10/03 16:01:11.000.562,C:\Users\Omnissiah\Workspace\Repo\Delphi\JavaParserMSiSvINFT\customTypes.pas=C:\Users\Omnissiah\Workspace\Repo\Delphi\JavaParserMSiSvINFT\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>

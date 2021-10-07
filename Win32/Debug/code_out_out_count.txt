@@ -59,32 +59,33 @@ Operands:
    25       1   "Sum = %.1f + %.1fi"
    26       3   temp.real
    27       3   temp.imag
-   28       2   0.0
-   29       1   n1.real
-   30       2   n2.real
-   31       1   n1.imag
-   32       1   n2.imag
-   33       1   booleanExpression1
-   34       1   booleanExpression2
-   35       2   myVar
-   36       1   false
-   37       4   num
-   38       1   2
-   39       1   expression
-   40       1   option1
-   41       1   option2
-   42       1   option3
-   43       1   option4
-   44       1   option5
-   45       1   myChar
-   46       1   'T'
-   47       1   RED
-   48       1   YELLOW
-   49       1   BLUE
-   50       1   GREEN
+   28       2   }
+   29       2   0.0
+   30       1   n1.real
+   31       2   n2.real
+   32       1   n1.imag
+   33       1   n2.imag
+   34       1   booleanExpression1
+   35       1   booleanExpression2
+   36       2   myVar
+   37       1   false
+   38       4   num
+   39       1   2
+   40       1   expression
+   41       1   option1
+   42       1   option2
+   43       1   option3
+   44       1   option4
+   45       1   option5
+   46       1   myChar
+   47       1   'T'
+   48       1   RED
+   49       1   YELLOW
+   50       1   BLUE
+   51       1   GREEN
 
 Operators dictionary: 29 - Operators, in total: 139
-Operands dictionary: 50 - Operands, in total: 81
-Program dictionary: 79
-Program length: 220
-Program volume: 1320
+Operands dictionary: 51 - Operands, in total: 83
+Program dictionary: 80
+Program length: 222
+Program volume: 1332

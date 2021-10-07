@@ -51,6 +51,7 @@ implementation
     begin
 
       num:=isExist(COUNT, TMP);
+      if pos(TMP, BLACKLIST)=0 then
       if num<>-1 then inc(COUNT[num].num)
         else
           begin
@@ -93,9 +94,29 @@ implementation
         end;
       end;
 
+  function isRightLex(LEX, DICT: String): boolean;
+    var
+      p, i: integer;
+
+    begin
+      RESULT:=true;
+      LEX:=' '+LEX+' ';
+      p:=pos(LEX, DICT);
+      if p=0 then RESULT:=false;
+      if RESULT then
+        begin
+          i:=p;
+          while DICT[i]<>' ' do
+            inc(i);
+          if pos(copy(DICT, p, i-p+1), LEX)=0 then RESULT:=false;
+        end;
+    end;
+
   procedure countLex(var COUNT: tCountAr; const LEXEMS: tArray);
     var
       maxLen, curLen: integer;
+
+
 
     procedure crawl(var POSIT: integer; const MODE: integer);   //0 - until the EoF, 1-), 2-}, 3->, 4-;, 5-; or }  6-]
       var
@@ -113,7 +134,7 @@ implementation
             tmp:=LEXEMS[cur];
             if tmp='' then break;
 
-            if (pos(tmp, MAJORENTRIES)>0) then
+            if (isRightLex(tmp,MAJORENTRIES)) then
                 begin
                   if tmp='(' then addLex(COUNT, curLen, maxLen, '(..)', true)
                     else if tmp='{' then addLex(COUNT, curLen, maxLen, '{..}', true)
@@ -122,15 +143,14 @@ implementation
                           else if tmp='if' then addLex(COUNT, curLen, maxLen, 'if..then..else', true)
                             else if tmp='switch' then addLex(COUNT, curLen, maxLen, 'switch..case', true)
                               else if tmp='try' then addLex(COUNT, curLen, maxLen, 'try..catch..finally', true)
-                                 else if tmp='?' then addLex(COUNT, curLen, maxLen, 'try..catch..finally', true)
-                                    else if tmp=':' then addLex(COUNT, curLen, maxLen, 'try..catch..finally', true)
+                                 else if tmp='?' then addLex(COUNT, curLen, maxLen, '?..:..', true)
                                   else addLex(COUNT, curLen, maxLen, tmp, true);
 
 
                   inc(cur);
                   crawl(cur, findTerm(tmp));
                 end
-              else if (pos(tmp, MINORENTRIES)>0) then
+              else if (isRightLex(tmp,MINORENTRIES)) then
                   begin
                     inc(cur);
                     crawl(cur, findTerm(tmp));
@@ -140,13 +160,13 @@ implementation
                       if (MODE<>0)and(tmp<>')')and(tmp<>']')and(tmp<>'}') then
                           begin
                             addLex(COUNT, curLen, maxLen, tmp, true);
-                            inc(cur);
-                          end;
 
+                          end;
+                      inc(cur);
                       isEnd:=true;
                       POSIT:=cur;
                     end
-                  else if (pos(tmp, SUPER_IGNORED)>0) then
+                  else if (isRightLex(tmp,SUPER_IGNORED)) then
                       begin
                         if tmp<>'enum' then
                             while (LEXEMS[cur]<>';')and(LEXEMS[cur]<>'{') do
@@ -157,23 +177,23 @@ implementation
                               crawl(cur, findTerm(LEXEMS[cur]));
                             end;
                       end
-                    else if (pos(tmp, IGNORED)>0) then
+                    else if (isRightLex(tmp,IGNORED)) then
                         begin
                           inc(cur);
                         end
 
-                    else if (pos(tmp, DSIGNS)>0) then
+                    else if (isRightLex(tmp,DSIGNS)) then
                         begin
                           addLex(COUNT, curLen, maxLen, tmp, true);
                           inc(cur);
                         end
 
-                    else if (pos(tmp, OP_SIGNS)>0)or(pos(tmp, JUMPES)>0) then
+                    else if ((isRightLex(tmp,OP_SIGNS)) )or ( (isRightLex(tmp,JUMPES))) then
                         begin
                           addLex(COUNT, curLen, maxLen, tmp, true);
                           inc(cur);
                         end
-                      else  if (pos(tmp, CYCLES)>0) then
+                      else  if (isRightLex(tmp,CYCLES)) then
                           begin
                             if tmp='do' then
                                 begin
@@ -181,28 +201,33 @@ implementation
                                   isWaiting:=true;
                                   inc(cur);
                                   crawl(cur, findTerm(tmp));
+                                  inc(cur);
                                 end
                               else if tmp='while' then
                                   begin
                                     if not isWaiting then
                                         begin
-                                          addLex(COUNT, curLen, maxLen, 'do..while', true);
+                                          addLex(COUNT, curLen, maxLen, 'while', true);
                                           inc(cur);
                                           crawl(cur, findTerm(tmp));
                                           inc(cur);
                                           crawl(cur, findTerm(LEXEMS[cur]));
+                                          inc(cur);
                                         end
                                       else
                                         begin
                                           isWaiting:=false;
                                           inc(cur);
-                                          crawl(cur, findTerm(tmp));
+                                          crawl(cur, findTerm(LEXEMS[cur]));
+                                          inc(cur);
                                         end;
                                   end
                                 else
                                   begin
                                     addLex(COUNT, curLen, maxLen, 'for', true);
-                                    crawl(cur, findTerm(tmp));
+                                    inc(cur);
+                                    crawl(cur, findTerm(LEXEMS[cur]));
+                                    inc(cur);
                                   end;
                           end
 
@@ -275,7 +300,8 @@ implementation
               inc(operatorGen, COUNT[i].num);
             end;
         end;
-      operatorDict:=k;
+
+      operatorDict:=k-1;
       writeln(f);
       k:=1;
       i:=0;
@@ -287,10 +313,11 @@ implementation
             begin
               writeln(f, k:5, COUNT[i].num:8,'   ',COUNT[i].lex);
               inc(k);
+              inc(operandGen, COUNT[i].num);
             end;
-          inc(operandGen, COUNT[i].num);
+
         end;
-      operandDict:=k;
+      operandDict:=k-1;
       writeln(f);
       writeln(f,'Operators dictionary: ',operatorDict,' - Operators, in total: ',operatorGen);
       writeln(f,'Operands dictionary: ',operandDict,' - Operands, in total: ',operandGen);
